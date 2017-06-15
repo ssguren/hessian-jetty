@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Properties>
+		<Property name="pattern">[%d{HH:mm:ss.SSS} %p][%t]{%c} - %m%n</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${pattern}" />
+		</Console>
+		
+		<RollingRandomAccessFile name="RollingFile" fileName="F:/hisproxy.log"
+			filePattern="hisproxy_%d{yyyy_MM_dd_HH}.log">
+			<PatternLayout pattern="${pattern}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingRandomAccessFile>
+
+		<Async name="ASYNC" bufferSize="256" >
+			<AppenderRef ref="Console" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<appender-ref ref="ASYNC" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment>
+	<applications>
+		<application user="client1" password="client1"/>
+	</applications>
+
+	<services>
+		<service name="hesTestService" interface="base.servicecenter.hessian.service.IHessianTestService" overload="true">
+			<provider class="base.servicecenter.hessian.service.impl.HessianTestService" beanname="hessianTestService" />
+		</service>
+	</services>
+</deployment>
